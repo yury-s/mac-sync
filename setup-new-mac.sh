@@ -57,6 +57,10 @@ phase_ssh() {
   chmod 700 "$HOME/.ssh"
   chmod 600 "$HOME/.ssh/"* 2>/dev/null
   chmod 644 "$HOME/.ssh/"*.pub 2>/dev/null
+  # load the key into the agent + macOS keychain ONCE, so the 17 repo clones
+  # don't each prompt for the key passphrase
+  ssh-add --apple-use-keychain "$HOME/.ssh/id_ed25519" 2>/dev/null \
+    && ok "key cached in agent/keychain" || warn "ssh-add: enter passphrase above if prompted"
   # warm github host key so the first clone doesn't prompt
   ssh-keyscan github.com 2>/dev/null >> "$HOME/.ssh/known_hosts" 2>/dev/null
   sort -u "$HOME/.ssh/known_hosts" -o "$HOME/.ssh/known_hosts" 2>/dev/null
