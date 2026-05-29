@@ -1,0 +1,11 @@
+anthropic.claude-code
+dbaeumer.vscode-eslint
+eamodio.gitlens
+github.codespaces
+github.copilot-labs
+ms-playwright.playwright
+ms-vscode-remote.remote-containers
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+ms-vscode.remote-explorer
+streetsidesoftware.code-spell-checker
