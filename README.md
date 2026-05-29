@@ -5,14 +5,23 @@ old Mac over SSH. The old Mac is never modified.
 
 ## Steps
 
-1. **From the new Mac**, copy this folder over once:
+1. **Make SSH to the old Mac passwordless** (do this first, or you'll be
+   prompted for your password on every transfer). On the new Mac:
+   ```sh
+   [ -f ~/.ssh/id_ed25519 ] || ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
+   ssh-copy-id <oldhost>     # last password prompt you'll see
+   ```
+   `<oldhost>` is the SSH host/alias of your current machine. (This temporary
+   key gets overwritten when the `ssh` phase pulls your real key from the old
+   Mac — that's fine; it's only used to reach the old Mac.)
+
+2. **From the new Mac**, copy this folder over once:
    ```sh
    scp -r <oldhost>:~/mac-sync ~/mac-sync
    cd ~/mac-sync
    ```
-   `<oldhost>` is the SSH host/alias of your current machine.
 
-2. Set the old host and run:
+3. Set the old host and run:
    ```sh
    OLDHOST=<oldhost> ./setup-new-mac.sh
    ```
