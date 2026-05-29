@@ -58,8 +58,18 @@ old Mac over SSH. The old Mac is never modified.
   a fresh key on the new Mac and add it to GitHub instead, then skip the key
   files in the `ssh` phase.
 
+## Dock layout (optional)
+
+Replicate the Dock with the standalone script — run it **after** apps are
+installed so the icons resolve:
+
+```sh
+OLDHOST=<oldhost> ./sync-dock.sh
+```
+
 ## Files in this folder
 
-- `setup-new-mac.sh` — the script
+- `setup-new-mac.sh` — the main migration script
+- `sync-dock.sh` — replicate the macOS Dock layout
 - `Brewfile` — Homebrew formulae/casks snapshot
 - `vscode-extensions.txt` — VS Code extension IDs
