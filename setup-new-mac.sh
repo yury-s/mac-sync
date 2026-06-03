@@ -72,7 +72,7 @@ phase_ssh() {
 phase_dotfiles() {
   require_oldhost
   hdr "Shell & misc dotfiles"
-  for f in .zshrc .zprofile .zshenv .bashrc .profile \
+  for f in .zshrc .zprofile .zshenv .bashrc .bash_aliases .profile \
            .gitconfig .tmux.conf .vimrc; do
     pull "~/$f" "$HOME/" "$f"
   done
